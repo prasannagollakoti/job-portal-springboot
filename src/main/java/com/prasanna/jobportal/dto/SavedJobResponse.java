@@ -1,0 +1,18 @@
+package com.prasanna.jobportal.dto;
+
+import lombok.*;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class SavedJobResponse {
+
+    private Long id;
+    private String title;
+    private String company;
+    private String location;
+    private Double salary;
+
+}
