@@ -1,7 +1,10 @@
 package com.prasanna.jobportal.dto;
 
-import com.prasanna.jobportal.entity.ApplicationStatus;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
@@ -15,7 +18,7 @@ public class ApplicationResponse {
     private Long id;
     private String jobTitle;
     private String company;
-    private ApplicationStatus status;
+    private String status;
     private LocalDateTime appliedAt;
 
 }

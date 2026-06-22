@@ -9,6 +9,7 @@ import com.prasanna.jobportal.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import com.prasanna.jobportal.entity.ApplicationStatus;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -60,7 +61,7 @@ public class ApplicationService {
                         .id(app.getId())
                         .jobTitle(app.getJob().getTitle())
                         .company(app.getJob().getCompany())
-                        .status(app.getStatus())
+                        .status(app.getStatus().name())
                         .appliedAt(app.getAppliedAt())
                         .build())
                 .toList();

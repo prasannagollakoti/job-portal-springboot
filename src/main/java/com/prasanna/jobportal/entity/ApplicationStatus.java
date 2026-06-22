@@ -1,11 +1,9 @@
 package com.prasanna.jobportal.entity;
 
 public enum ApplicationStatus {
-
     APPLIED,
-    REVIEWING,
+    UNDER_REVIEW,
     SHORTLISTED,
     REJECTED,
-    SELECTED
-
+    HIRED
 }
