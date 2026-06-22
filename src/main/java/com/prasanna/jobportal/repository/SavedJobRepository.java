@@ -1,5 +1,6 @@
 package com.prasanna.jobportal.repository;
 
+import com.prasanna.jobportal.entity.Job;
 import com.prasanna.jobportal.entity.SavedJob;
 import com.prasanna.jobportal.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -10,4 +11,5 @@ public interface SavedJobRepository extends JpaRepository<SavedJob, Long> {
 
     List<SavedJob> findByUser(User user);
 
+    void deleteByJob(Job job);
 }

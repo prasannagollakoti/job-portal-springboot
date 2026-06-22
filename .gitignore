@@ -31,3 +31,14 @@ build/
 
 ### VS Code ###
 .vscode/
+# Application config
+src/main/resources/application.properties
+
+# Uploaded resumes
+uploads/
+
+# Environment files
+.env
+
+# Mac files
+.DS_Store

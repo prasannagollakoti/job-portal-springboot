@@ -34,6 +34,9 @@ public class User implements UserDetails{
     private Role role;
 
     private LocalDateTime createdAt;
+    private String resumeFileName;
+
+    private String resumePath;
     @OneToMany(mappedBy = "applicant")
     @JsonIgnore
     private List<Application> applications;
@@ -66,4 +69,5 @@ public class User implements UserDetails{
     public boolean isEnabled() {
         return true;
     }
+
 }

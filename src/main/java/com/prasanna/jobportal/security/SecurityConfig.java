@@ -28,6 +28,7 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/**", "/jobs/**").permitAll()
+                        .requestMatchers("/resume/**").authenticated()
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session ->
