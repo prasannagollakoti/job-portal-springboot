@@ -1,7 +1,6 @@
 package com.prasanna.jobportal.controller;
 
 import com.prasanna.jobportal.dto.SavedJobResponse;
-import com.prasanna.jobportal.entity.SavedJob;
 import com.prasanna.jobportal.service.SavedJobService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +16,9 @@ public class SavedJobController {
 
     @PostMapping("/save/{jobId}")
     public String saveJob(@PathVariable Long jobId) {
+
         return savedJobService.saveJob(jobId);
+
     }
 
     @GetMapping("/my")
@@ -26,4 +27,12 @@ public class SavedJobController {
         return savedJobService.getSavedJobs();
 
     }
+
+    @DeleteMapping("/{jobId}")
+    public String removeSavedJob(@PathVariable Long jobId) {
+
+        return savedJobService.removeSavedJob(jobId);
+
+    }
+
 }

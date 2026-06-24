@@ -5,10 +5,10 @@ import com.prasanna.jobportal.entity.User;
 import com.prasanna.jobportal.repository.UserRepository;
 import com.prasanna.jobportal.security.JwtService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 
@@ -35,8 +35,14 @@ public class AuthService {
 
         String token = jwtService.generateToken(user);
 
-        return new AuthResponse(token);
+        return new AuthResponse(
+                user.getId(),
+                token,
+                user.getRole().name(),
+                user.getName()
+        );
     }
+
     public AuthResponse login(LoginRequest request) {
 
         authenticationManager.authenticate(
@@ -51,6 +57,11 @@ public class AuthService {
 
         String token = jwtService.generateToken(user);
 
-        return new AuthResponse(token);
+        return new AuthResponse(
+                user.getId(),
+                token,
+                user.getRole().name(),
+                user.getName()
+        );
     }
 }

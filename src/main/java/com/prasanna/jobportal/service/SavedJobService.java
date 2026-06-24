@@ -8,6 +8,8 @@ import com.prasanna.jobportal.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -58,11 +60,34 @@ public class SavedJobService {
         return savedJobs.stream()
                 .map(saved -> SavedJobResponse.builder()
                         .id(saved.getId())
+                        .jobId(saved.getJob().getId())
                         .title(saved.getJob().getTitle())
                         .company(saved.getJob().getCompany())
                         .location(saved.getJob().getLocation())
                         .salary(saved.getJob().getSalary())
                         .build())
                 .toList();
+    }
+    private User getCurrentUser() {
+
+        Authentication authentication =
+                SecurityContextHolder.getContext().getAuthentication();
+
+        return userRepository.findByEmail(authentication.getName())
+                .orElseThrow(() -> new RuntimeException("User not found"));
+    }
+    public String removeSavedJob(Long jobId) {
+
+        User user = getCurrentUser();
+
+        Job job = jobRepository.findById(jobId)
+                .orElseThrow(() -> new RuntimeException("Job not found"));
+
+        SavedJob savedJob = savedJobRepository.findByUserAndJob(user, job)
+                .orElseThrow(() -> new RuntimeException("Saved job not found"));
+
+        savedJobRepository.delete(savedJob);
+
+        return "Job removed successfully";
     }
 }

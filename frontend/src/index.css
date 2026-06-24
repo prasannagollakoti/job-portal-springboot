@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family: "Segoe UI", sans-serif;
+  background-color:#FFF9F2; /* Ivory Cream */
+  color:#4A3A33;
+}
+
+a{
+  text-decoration:none;
+}
+
+button{
+  cursor:pointer;
+  transition:0.3s ease;
+}
+
+input,
+select,
+textarea{
+  outline:none;
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar{
+  width:10px;
+}
+
+::-webkit-scrollbar-track{
+  background:#FFF9F2;
+}
+
+::-webkit-scrollbar-thumb{
+  background:#C76D4E;
+  border-radius:20px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+  background:#A85A40;
+}
+body{
+  font-family: Arial, sans-serif;
+  background:#FFF9F2;
+  overflow-x:hidden;
+}
+
+html,
+body,
+#root{
+  min-height:100%;
+}
+
+body{
+  font-family: Arial, sans-serif;
+  background:#FFF9F2;
+  overflow-x:hidden;
+}

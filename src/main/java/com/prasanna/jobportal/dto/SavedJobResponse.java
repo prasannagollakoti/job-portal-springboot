@@ -9,7 +9,9 @@ import lombok.*;
 @Builder
 public class SavedJobResponse {
 
-    private Long id;
+    private Long id;      // SavedJob table id
+    private Long jobId;   // Actual Job table id
+
     private String title;
     private String company;
     private String location;
