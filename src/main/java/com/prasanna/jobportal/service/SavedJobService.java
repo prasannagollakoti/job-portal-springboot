@@ -76,15 +76,16 @@ public class SavedJobService {
         return userRepository.findByEmail(authentication.getName())
                 .orElseThrow(() -> new RuntimeException("User not found"));
     }
-    public String removeSavedJob(Long jobId) {
+    public String removeSavedJob(Long savedJobId) {
 
         User user = getCurrentUser();
 
-        Job job = jobRepository.findById(jobId)
-                .orElseThrow(() -> new RuntimeException("Job not found"));
-
-        SavedJob savedJob = savedJobRepository.findByUserAndJob(user, job)
+        SavedJob savedJob = savedJobRepository.findById(savedJobId)
                 .orElseThrow(() -> new RuntimeException("Saved job not found"));
+
+        if (!savedJob.getUser().getId().equals(user.getId())) {
+            throw new RuntimeException("Unauthorized");
+        }
 
         savedJobRepository.delete(savedJob);
 
